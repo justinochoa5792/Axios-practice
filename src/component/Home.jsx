@@ -17,6 +17,7 @@ class Home extends Component {
       <div>
         <Link to="/quiz">Quiz |</Link>
         <Link to="/jokes"> Jokes |</Link>
+        <Link to="/codewar"> CodeWar |</Link>
         <h1>Random Dogs</h1>
         <img src={this.state.dogs} alt={this.state.name} />
       </div>

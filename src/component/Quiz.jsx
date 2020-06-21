@@ -11,24 +11,37 @@ class Quiz extends Component {
         "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
       )
       .then((response) => {
-        console.log(response.data.results);
         this.setState({ quiz: response.data.results });
       });
   }
+  answerQuestion = (correct_answer, incorrect_answers) => {
+    if (correct_answer !== incorrect_answers) {
+      alert("Good job that is correct!");
+    } else {
+      alert("I am sorry that is incorrect!");
+    }
+  };
   showQuiz = () => {
     return this.state.quiz.map((eachQuiz) => {
       return (
         <li>
           {eachQuiz.question}
-          <button>{eachQuiz.incorrect_answers[0]}</button>
-          <button>{eachQuiz.incorrect_answers[1]}</button>
-          <button>{eachQuiz.incorrect_answers[2]}</button>
-          <button>{eachQuiz.correct_answer}</button>
+          <button onClick={() => this.answerQuestion()}>
+            {eachQuiz.incorrect_answers[0]}
+          </button>
+          <button onClick={() => this.answerQuestion()}>
+            {eachQuiz.incorrect_answers[1]}
+          </button>
+          <button onClick={() => this.answerQuestion()}>
+            {eachQuiz.incorrect_answers[2]}
+          </button>
+          <button onClick={() => this.answerQuestion()}>
+            {eachQuiz.correct_answer}
+          </button>
         </li>
       );
     });
   };
-
   render() {
     return (
       <div>
